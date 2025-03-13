@@ -18,7 +18,7 @@ ZAMMAD_API_URL = os.environ.get('ZAMMAD_API_URL') or app.config.get('ZAMMAD_API_
 ZAMMAD_USERNAME = os.environ.get('ZAMMAD_USERNAME') or app.config.get('ZAMMAD_USERNAME', None)
 ZAMMAD_PASSWORD = os.environ.get('ZAMMAD_PASSWORD') or app.config.get('ZAMMAD_PASSWORD', None)
 ZAMMAD_TOKEN = os.environ.get('ZAMMAD_TOKEN') or app.config.get('ZAMMAD_TOKEN', None)
-ZAMMAD_GROUP =  os.environ.get('ZAMMAD_GROUP') or app.config.get('ZAMMAD_GROUP', 'Users')
+ZAMMAD_GROUP =  os.environ.get('ZAMMAD_GROUP') or app.config.get('ZAMMAD_GROUP', None )
 # Should be email
 ZAMMAD_CUSTOMER =  os.environ.get('ZAMMAD_CUSTOMER') or app.config['ZAMMAD_CUSTOMER'] # Required
 ZAMMAD_ARTICLE_TYPE =  os.environ.get('ZAMMAD_ARTICLE_TYPE') or app.config.get('ZAMMAD_ARTICLE_TYPE', 'note')
@@ -77,7 +77,6 @@ class ZammadTicket(PluginBase):
         )
         payload = {
             'title': title,
-            'group': ZAMMAD_GROUP,
             'article': {
                 'subject': 'Received alert',
                 'body': body,
@@ -88,6 +87,8 @@ class ZammadTicket(PluginBase):
             'customer': customer,
             'state': 'open'
         }
+        if ZAMMAD_GROUP:
+            payload['group'] = ZAMMAD_GROUP
         LOG.debug("Zammad create ticket payload: %s", payload)
         LOG.debug("Zammad created ticket for alert id: %s", alert.id)
         r = self._send_request(url, payload, "post")
