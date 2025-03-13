@@ -64,7 +64,7 @@ These setting are optional and further customize the integrations into Zammad.
 ZAMMAD_API_URL = '' # default="ZAMMAD_URL + /api/v1/"
 ZAMMAD_GROUP = '' # default="Users"
 ZAMMAD_ARTICLE_TYPE = '' #default="note"
-ZAMMAD_ENVIROMENT = '' #default="Production"
+ZAMMAD_ENVIRONMENT = '' #default="Production"
 ```
 
 ### Example
@@ -77,7 +77,7 @@ PLUGINS = ['reject', 'zammad']
 ZAMMAD_CUSTOMER = 'alerta@alerta.io'
 ZAMMAD_TOKEN = '3tKTy9PsxkwsOshTTm1PqBi2r03QNbD4UmRX2EZ0lH-EVZqGDTdWM2-V_yOnCOSE'
 DASHBOARD_URL = 'https://try.alerta.io'
-ZAMMAD_ENVIROMENT = 'Production,Test'
+ZAMMAD_ENVIRONMENT = 'Production,Test'
 ```
 
 ## Development && Debug
