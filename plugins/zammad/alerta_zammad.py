@@ -98,7 +98,7 @@ class ZammadTicket(PluginBase):
                     LOG.debug("Zammad ticket id: %s", zammad_ticket_id)
                     alert.update_attributes({"zammadTicketId": zammad_ticket_id})
                     alert.tag([f"zammadTicketId={zammad_ticket_id}"])
-                    zammad_ticket_url = f'<a href=\"{ZAMMAD_URL}/#ticket/zoom{zammad_ticket_id}\" target=\"_blank\">Zammad Ticket</a>'
+                    zammad_ticket_url = f'<a href=\"{ZAMMAD_URL}/#ticket/zoom/{zammad_ticket_id}\" target=\"_blank\">Zammad Ticket</a>'
                     LOG.debug("Zammad ticket url: %s", zammad_ticket_url)
                     alert.update_attributes({"zammadTicketUrl": zammad_ticket_url })
                     LOG.debug("Zammad alert after zammad_ticked_id add: %s", alert.get_body(history=False))
